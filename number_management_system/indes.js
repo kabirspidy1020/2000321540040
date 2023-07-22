@@ -10,10 +10,10 @@ app.get('/numbers', async (req, res) => {
   const { url } = req.query;
 
   if (!url) {
-    return res.status(400).json({ error: 'URLs are required' });
+    return res.status(400).json({ error: 'urls are required' });
   }
 
-  try {
+  Try {
     const urls = Array.isArray(url) ? url : [url];
     const responses = await Promise.all(urls.map((url) => axios.get(url)));
 
@@ -27,10 +27,10 @@ app.get('/numbers', async (req, res) => {
 
     return res.json({ numbers: sortedNumbers });
   } catch (error) {
-    return res.status(500).json({ error: 'Failed to retrieve numbers' });
+    return res.status(500).json({ error: 'Failed to load numbers' });
   }
 });
 
 app.listen(port, () => {
-  console.log(`Number Management Service is running on port ${port}`);
+  console.log(`Number management service running on port ${port}`);
 });
